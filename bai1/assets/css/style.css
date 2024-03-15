@@ -64,7 +64,7 @@ a {
 }
 .header.fixed {
   position: fixed;
-  top: 0px;
+  top: 0;
   left: 0;
   right: 0;
   z-index: 1;
@@ -193,12 +193,22 @@ a {
   line-height: 68px; /* 117.241% */
   letter-spacing: -1.16px;
 }
+.hero .heading::selection{
+  background: #858380;
+  color:black;
+  border-radius: 999px;
+}
 .hero .desc {
   color: #5f5b53;
   font-size: 1.8rem;
   font-weight: 400;
   line-height: 1.67; /* 166.667% */
   margin-top: 22px;
+}
+.hero .desc::selection{
+  background: #e2dfda;
+  color:black;
+  border-radius: 999px;
 }
 .hero .cta-group {
   margin-top: 38px;
@@ -358,19 +368,28 @@ a {
 }
 /* =============feedback============= */
 .feedback {
-  background: #2e2100;
   margin-top: 135px;
-  padding: 65px 0;
+  padding: 96px 0;
+  background: #2e2100;
 }
-.feedback .info .avatar {
+.feedback-list{
+  display: flex;
+overflow: hidden;
+}
+.feedback-item {
+width: 100%;
+  display: flex;
+  flex-shrink: 0;
+ /* border: 2px solid var(--primary-color); */
+
+}
+.feedback-item .avatar {
   width: 72px;
   height: 72px;
   border-radius: 50%;
+  object-fit: cover;
 }
-.feedback .main-content {
-  display: flex;
-}
-.feedback .info .name-member {
+.feedback-item .info .member-name {
   margin-top: 18px;
   color: #f7f7f7;
   font-family: var(--font-heading);
@@ -378,33 +397,39 @@ a {
   font-weight: 700;
   line-height: 1.42; /* 141.667% */
 }
-.feedback .info .desc {
-  margin-top: 4px;
+.feedback-item .info .desc {
   color: #bfbcb2;
-  font-size: 1.4;
+  font-size: 1.4rem;
   font-weight: 400;
   line-height: 1.86; /* 185.714% */
 }
 
-.feedback .info .dots span {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
+.feedback-item .dots {
+  display: flex;
+  margin-top: 20px;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.feedback-item .dot.active {
+  background: var(--primary-color);
+  cursor: default;
+}
+.feedback-item .dots span {
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
   background-color: #634700;
 }
-.feedback .info .dots span + span {
-  margin-left: 6px;
+.feedback-item .dots span:first-child{
+  margin-left: 8px;
 }
-.feedback .info .dots span:hover {
-  background-color: #ffb900;
-  cursor: pointer;
-}
-.feedback .content {
+
+.feedback-item .content {
   width: 66%;
   margin-left: auto;
 }
-.feedback .content p {
+.feedback-item p {
   width: 96%;
   color: #fff;
   font-size: 2.6rem;
@@ -412,5 +437,4 @@ a {
   font-weight: 400;
   line-height: 1.54; /* 153.846% */
   margin-left: auto;
-
 }
